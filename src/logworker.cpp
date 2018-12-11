@@ -29,7 +29,7 @@ namespace g3 {
 
       if (_sinks.empty()) {
          std::string err_msg {"g3logworker has no sinks. Message: ["};
-         err_msg.append(uniqueMsg.get()->toString()).append({"]\n"});
+         err_msg.append(uniqueMsg.get()->toString()).append("]\n");
          std::cerr << err_msg;
       }
    }
@@ -121,7 +121,7 @@ namespace g3 {
    }
 
    std::unique_ptr<FileSinkHandle>LogWorker::addDefaultLogger(const std::string& log_prefix, const std::string& log_directory, const std::string& default_id) {
-      return addSink(std2::make_unique<g3::FileSink>(log_prefix, log_directory, default_id), &FileSink::fileWrite);
+      return addSink(std::make_unique<g3::FileSink>(log_prefix, log_directory, default_id), &FileSink::fileWrite);
    }
 
 
