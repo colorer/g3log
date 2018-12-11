@@ -61,9 +61,6 @@ ELSEIF(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
    ENDIF()
 ELSEIF(MSVC)
    set(PLATFORM_LINK_LIBRIES dbghelp)
-   set(CMAKE_CXX_FLAGS_RELEASE "/MT")
-   set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
-   ADD_DEFINITIONS (-DNOGDI)
    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8") # source code already in utf-8, force it for compilers in non-utf8_windows_locale
    # ERROR level conflicts with windows.h
    ADD_DEFINITIONS (-DNOGDI)
@@ -107,7 +104,6 @@ ENDIF()
 
    # Create the g3log library
    INCLUDE_DIRECTORIES(${LOG_SRC})
-   target_include_directories(g3logger PUBLIC ${LOG_SRC})
    SET(G3LOG_LIBRARY g3logger)
 
    IF( G3_SHARED_LIB )
